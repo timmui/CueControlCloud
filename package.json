@@ -1,0 +1,26 @@
+{
+  "name": "cuecontrolcloud",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "url": "git@github.com:timmui/CueControlCloud.git",
+    "type": "git"
+  },
+  "author": "Tim Mui <timmui123@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.1.2",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "lodash": "3.10.1",
+    "request": "^2.78.0",
+    "request-promise": "^4.1.1",
+    "socket.io": "^1.5.1",
+    "xml2json": "^0.10.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.10.0",
+    "eslint-plugin-import": "^2.2.0"
+  }
+}
