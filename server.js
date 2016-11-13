@@ -4,14 +4,7 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
-
-const stocks = require('./stocks');
-const userStocks = {
-    symbols: [
-        'GOOG',
-        'APPL',
-    ],
-};
+const routes = require('./routes')(io);
 const port = 3030;
 
 // Body parsing middleware
@@ -31,27 +24,7 @@ io.on('connection', function(client){
   client.on('disconnect', function(){});
 });
 
-
-// Configure Endpoints
-app.post('/stockUpdate', (req, res) => {
-    io.sockets.emit('update', req.body.symbol);
-    stocks.getStocks(req.body.symbol, (err, res) => {
-        if (err) console.error(err);
-
-        res.send({prices: res});
-    });
-});
-
-app.get('/clear', (req,res) => {
-    io.sockets.emit('clear', {});
-    res.send({});
-});
-
-app.get('/stocks', (req,res) => {
-    res.send(userStocks);
-});
-
-
+app.use('/', routes);
 // Configure Port
 if (port) {
   app.listen(port, error => {
