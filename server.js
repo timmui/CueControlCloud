@@ -5,7 +5,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
 const routes = require('./routes')(io);
-const port = 3030;
+const port = process.env.PORT || 3030;
 
 // Body parsing middleware
 app.use(bodyParser.json()); // for parsing application/json
